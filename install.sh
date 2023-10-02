@@ -10,4 +10,4 @@ script_dir=$(dirname "$(readlink -f "$0")")
 cp -r "$script_dir" ~/.local/share/omzz
 
 echo "source ~/.local/share/omzz/main.sh" >> ~/.zshenv
-# rm -rf "$script_dir"
+rm -rf "$script_dir"
