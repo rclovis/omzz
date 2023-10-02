@@ -1,6 +1,7 @@
 if [ -d "$HOME/.oh-my-zsh" ]; then
+    echo "oh-my-zsh is already installed"
 else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &
 fi
 
 script_dir=$(dirname "$(readlink -f "$0")")

@@ -1,3 +1,3 @@
 git pull origin main &> /dev/null
 
-source mods/*zsh
+source ~/.local/share/omzz/mods/*sh
