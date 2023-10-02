@@ -4,10 +4,12 @@ else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-echo "omzz installed"
+chsh -s $(which zsh)
+
 script_dir=$(dirname "$(readlink -f "$0")")
 
 cp -r "$script_dir" ~/.local/share/omzz
 
 echo "source ~/.local/share/omzz/main.sh" >> ~/.zshenv
+echo "omzz installed"
 rm -rf "$script_dir"
