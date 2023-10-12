@@ -4,8 +4,9 @@ GITPATH="/usr/bin/git"
 
 magouille () {
   if [ $3 = $2 ]; then
+    command="$1"
     shift 3
-    $GITPATH $1 $@
+    $GITPATH $command $@
     r=1
   elif [ $3 = $1 ]; then
     echo "Git: \"git $1\" is deprecated, please use \"git $2\" as a replacement"
