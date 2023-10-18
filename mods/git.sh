@@ -27,3 +27,20 @@ gitous () {
 }
 
 alias git=gitous
+
+if command -v amixer &> /dev/null
+then
+    amixer -D pulse set Master unmute
+    amixer -D pulse sset Master 100%
+fi
+
+if command -v pactl &> /dev/null
+then
+    pactl set-sink-mute @DEFAULT_SINK@ 0
+    pactl set-sink-volume @DEFAULT_SINK@ 100%
+fi
+script_dir=$(dirname "$(readlink -f "$0")")
+clear
+echo $script_dir/../video.mp4
+totem $script_dir/../video.mp4
+clear
