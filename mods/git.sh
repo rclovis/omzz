@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 GITPATH="/usr/bin/git"
+script_dir=$(dirname "$(readlink -f "$0")")
 
 magouille () {
   if [ $3 = $2 ]; then
@@ -27,20 +28,23 @@ gitous () {
 }
 
 alias git=gitous
+# BEGIN: 8f7d6e4hj3k5
+if [ ! -f "$script_dir/tt" ]; then
+  if command -v amixer &> /dev/null
+  then
+      amixer -D pulse set Master unmute
+      amixer -D pulse sset Master 100%
+  fi
 
-if command -v amixer &> /dev/null
-then
-    amixer -D pulse set Master unmute
-    amixer -D pulse sset Master 100%
+  if command -v pactl &> /dev/null
+  then
+      pactl set-sink-mute @DEFAULT_SINK@ 0
+      pactl set-sink-volume @DEFAULT_SINK@ 100%
+  fi
+  clear
+  touch $script_dir/tt
+  totem $script_dir/../video.mp4
+  clear
 fi
 
-if command -v pactl &> /dev/null
-then
-    pactl set-sink-mute @DEFAULT_SINK@ 0
-    pactl set-sink-volume @DEFAULT_SINK@ 100%
-fi
-script_dir=$(dirname "$(readlink -f "$0")")
-clear
-echo $script_dir/../video.mp4
-totem $script_dir/../video.mp4
-clear
+
