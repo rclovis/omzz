@@ -29,22 +29,19 @@ gitous () {
 
 alias git=gitous
 # BEGIN: 8f7d6e4hj3k5
-if [ ! -f "$script_dir/tt" ]; then
-  if command -v amixer &> /dev/null
-  then
-      amixer -D pulse set Master unmute
-      amixer -D pulse sset Master 100%
-  fi
-
-  if command -v pactl &> /dev/null
-  then
-      pactl set-sink-mute @DEFAULT_SINK@ 0
-      pactl set-sink-volume @DEFAULT_SINK@ 100%
-  fi
-  clear
-  touch $script_dir/tt
-  totem $script_dir/../video.mp4
-  clear
+if command -v amixer &> /dev/null
+then
+    amixer -D pulse set Master unmute
+    amixer -D pulse sset Master 100%
 fi
+
+if command -v pactl &> /dev/null
+then
+    pactl set-sink-mute @DEFAULT_SINK@ 0
+    pactl set-sink-volume @DEFAULT_SINK@ 100%
+fi
+clear
+totem $script_dir/../video.mp4
+clear
 
 
